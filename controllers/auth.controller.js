@@ -23,7 +23,7 @@ class AuthController {
 
       const user = await UserModel.create(req.body);
       const verifyToken = user.getSignedJwtToken();  
-      const verifyUrl = `http://localhost:3000/verify/${verifyToken}`
+      const verifyUrl = `https://rumahbercerita.netlify.app/verify/${verifyToken}`
 
       const emailMessage = {
         subject: "Verify your GoCure email address",
@@ -169,7 +169,7 @@ class AuthController {
       const resetToken = user.getResetPasswordToken()
       await user.save();
 
-      const resetUrl = `http://localhost:3000/passwordreset/${resetToken}`;
+      const resetUrl = `https://rumahbercerita.netlify.app/passwordreset/${resetToken}`;
       const emailMessage = {
         subject: "We received a request to reset your password",
         title: "Reset Password",
