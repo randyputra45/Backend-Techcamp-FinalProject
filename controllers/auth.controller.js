@@ -33,9 +33,9 @@ class AuthController {
       }
 
       try {
-        res.json(await emailConfirmation.sendEmail(req.body, emailMessage, verifyUrl));
+        res.json(await emailConfirmation.sendEmailSendinblue(req.body, emailMessage, verifyUrl));
       } catch (err) {
-        return next(new ErrorResponse("Email could not be sent", 500));
+        return next(new ErrorResponse(err, 500));
       }
     } catch (error) {
       next(error)

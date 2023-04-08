@@ -2,6 +2,13 @@ const sendGridMail = require("@sendgrid/mail");
 const res = require("express/lib/response");
 sendGridMail.setApiKey(process.env.SENDGRID_API_KEY);
 
+// Sendinblue
+const Sib = require("sib-api-v3-sdk");
+const client = Sib.ApiClient.instance;
+const apiKey = client.authentications["api-key"];
+apiKey.apiKey = process.env.SENDINBLUE_SECRET_KEY;
+const tranEmailApi = new Sib.TransactionalEmailsApi();
+
 function getEmailHtml(emailMessage, url) {
   return `<!DOCTYPE html>
   <html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" lang="en">
@@ -270,8 +277,6 @@ async function sendEmail(emailParams, emailMessage, url) {
     };
   } catch (error) {
     const message = `Error sending email`;
-    console.error(message);
-    console.error(error);
     if (error.response) {
       console.error(error.response.body);
     }
@@ -282,6 +287,37 @@ async function sendEmail(emailParams, emailMessage, url) {
   }
 }
 
+const sender = {
+  email: "rumah.bersamabercerita@gmail.com",
+  name: "Rumah Bercerita",
+};
+
+async function sendEmailSendinblue(emailParams, emailMessage, url) {
+  try {
+    await tranEmailApi.sendTransacEmail({
+      sender,
+      to: [
+        {
+          email: emailParams.email,
+        },
+      ],
+      subject: emailMessage.subject,
+      textContent: `Hey ${emailParams.email}, we have received your password reset request, Use the link below to set up a new password for your account. This link will expire in 4 hours.`,
+      htmlContent: getEmailHtml(emailMessage, url),
+    });
+    return {
+      success: true,
+      message: `Email sent successfully`,
+    };
+  } catch (error) {
+    return res.status(200).json({
+      success: false,
+      message: `Error sending email`,
+    });
+  }
+}
+
 module.exports = {
   sendEmail,
+  sendEmailSendinblue
 };
