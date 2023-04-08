@@ -26,7 +26,7 @@ class AuthController {
       const verifyUrl = `https://rumahbercerita.netlify.app/verify/${verifyToken}`
 
       const emailMessage = {
-        subject: "Verify your GoCure email address",
+        subject: "Verify your Rumah Bercerita email address",
         title: "Activate Account",
         text: `Hey ${user.first_name}, we have received your account registration. Activate your account now by clicking on the button below. This link will expire in 7 days.`,
         buttonMessage: "Click the button below to activate your account"

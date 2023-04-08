@@ -130,7 +130,7 @@ class ConsultationController {
             "name": body.package_name,
             "price": body.price,
             "quantity": 1,
-            "merchant_name": "GoCure"
+            "merchant_name": "Rumah Bercerita"
           },
         ],
       };
@@ -161,7 +161,9 @@ class ConsultationController {
           }
         });
     } catch (error) {
-        next(error)
+      res.status(500).send({ err: error });
+      console.log(error)
+      next(error)
     }
   }
 }

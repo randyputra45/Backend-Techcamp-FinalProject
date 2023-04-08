@@ -80,7 +80,7 @@ function getEmailHtml(emailMessage, url) {
                             <table class="image_block" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
                               <tr>
                                 <td style="padding-bottom:25px;padding-top:15px;width:100%;padding-right:0px;padding-left:0px;">
-                                  <div align="center" style="line-height:10px"><img src="https://i.ibb.co/LNKjhTn/gocure-panjang.png" style="display: block; height: auto; border: 0; width: 130px; max-width: 100%;" width="130" alt="your logo" title="your logo"></div>
+                                  <div align="center" style="line-height:10px"><img src="https://i.ibb.co/LNKjhTn/Rumah Bercerita-panjang.png" style="display: block; height: auto; border: 0; width: 130px; max-width: 100%;" width="130" alt="your logo" title="your logo"></div>
                                 </td>
                               </tr>
                             </table>
@@ -221,7 +221,7 @@ function getEmailHtml(emailMessage, url) {
                                       <p style="margin: 0; text-align: center;"><span style="font-size:11px;color:#000000;">If you did not make this request, you do not need to do anything.</span></p>
                                       <p style="margin: 0; text-align: center;"><span style="font-size:11px;color:#000000;">Thanks for your time</span></p>
                                       <p style="margin: 0; text-align: center; mso-line-height-alt: 14.399999999999999px;">&nbsp;</p>
-                                      <p style="margin: 0; text-align: center;"><span style="font-size:11px;color:#000000;"><span style>Jakarta, Indonesia&nbsp; /&nbsp;&nbsp;GoCure by MS Wellbeing /&nbsp;gocure.netlify.app</span><a href="http://www.example.com" style="color:#000000;"></a></span></p>
+                                      <p style="margin: 0; text-align: center;"><span style="font-size:11px;color:#000000;"><span style>Jakarta, Indonesia&nbsp; /&nbsp;&nbsp;Rumah Bercerita /&nbsp;rumahbercerita.netlify.app</span><a href="rumahbercerita.netlify.app" style="color:#000000;"></a></span></p>
                                       <p style="margin: 0; mso-line-height-alt: 14.399999999999999px;">&nbsp;</p>
                                     </div>
                                   </div>
@@ -259,7 +259,7 @@ function getEmailHtml(emailMessage, url) {
 function getMessage(emailParams, emailMessage, url) {
   return {
     to: emailParams.email,
-    from: "gocure16@gmail.com",
+    from: "rumah.bersamabercerita@gmail.com",
     subject: emailMessage.subject,
     text: `Hey ${emailParams.email}, we have received your password reset request, Use the link below to set up a new password for your account. This link will expire in 4 hours.`,
     html: getEmailHtml(emailMessage, url),
@@ -292,7 +292,11 @@ const sender = {
   name: "Rumah Bercerita",
 };
 
-async function sendEmailSendinblue(emailParams, emailMessage, url) {
+async function sendEmailSendinblue(
+  emailParams,
+  emailMessage,
+  url
+) {
   try {
     await tranEmailApi.sendTransacEmail({
       sender,
@@ -319,5 +323,5 @@ async function sendEmailSendinblue(emailParams, emailMessage, url) {
 
 module.exports = {
   sendEmail,
-  sendEmailSendinblue
+  sendEmailSendinblue,
 };

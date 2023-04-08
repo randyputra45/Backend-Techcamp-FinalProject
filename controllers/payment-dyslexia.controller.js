@@ -62,7 +62,7 @@ class PaymentDyslexiaController {
                 "name": body.package_name,
                 "price": body.price,
                 "quantity": 1,
-                "merchant_name": "GoCure"
+                "merchant_name": "Rumah Bersama"
               },
             ],
           };
@@ -93,7 +93,8 @@ class PaymentDyslexiaController {
               }
             });
         } catch (error) {
-            next(error)
+          res.status(500).send({ err: error });
+          next(error)
         }
     }
 }
