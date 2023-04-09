@@ -62,7 +62,7 @@ class PaymentDyslexiaController {
                 "name": body.package_name,
                 "price": body.price,
                 "quantity": 1,
-                "merchant_name": "Rumah Bersama"
+                "merchant_name": "Rumah Bercerita"
               },
             ],
           };
