@@ -6,7 +6,7 @@ const videoSchema = new Schema(
     title: {
       type: String,
     },
-    decs: {
+    desc: {
       type: String,
     },
     thumbnail_url: {
