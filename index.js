@@ -21,6 +21,7 @@ const paymentWebinarRoutes = require("./routes/payment-webinar.route");
 const paymentDyslexiaRoutes = require("./routes/payment-dyslexia.route");
 const coachingRoutes = require("./routes/coaching.route");
 const dyslexiaRoutes = require("./routes/dyslexia.route");
+const videoRoutes = require("./routes/video.route");
 
 const port = process.env.PORT || 3000;
 const uri = process.env.MONGO_URI;
@@ -56,6 +57,7 @@ async function main() {
     app.use(paymentCoachingRoutes);
     app.use(paymentWebinarRoutes);
     app.use(paymentDyslexiaRoutes);
+    app.use(videoRoutes);
 
     app.use(errorHandler);
 
