@@ -3,7 +3,6 @@ const cors = require("cors");
 
 const VideoController = require("../controllers/video.controller");
 
-// creates a new router instance
 const router = express.Router();
 const corsOptions = {
     origin: true, //included origin as true
