@@ -80,7 +80,7 @@ function getEmailHtml(emailMessage, url) {
                             <table class="image_block" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
                               <tr>
                                 <td style="padding-bottom:25px;padding-top:15px;width:100%;padding-right:0px;padding-left:0px;">
-                                  <div align="center" style="line-height:10px"><img src="https://ibb.co/BswFYpG" style="display: block; height: auto; border: 0; width: 130px; max-width: 100%;" width="130" alt="your logo" title="your logo"></div>
+                                  <div align="center" style="line-height:10px"><img src="https://i.ibb.co/KymS8PD/rumah-Bercerita.png" style="display: block; height: auto; border: 0; width: 130px; max-width: 100%;" width="130" alt="your logo" title="your logo"></div>
                                 </td>
                               </tr>
                             </table>

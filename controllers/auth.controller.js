@@ -15,28 +15,32 @@ class AuthController {
     const { email } = req.body
     try {
       const existingUser = await UserModel.findOne({email});
-      if (existingUser) {
+      if (existingUser !== null) {
         return res.status(409).send({ 
-          message: "Email is already in use."
+          message: "User is already exist!"
         });
+      } 
+      else {
+        const user = await UserModel.create(req.body);
+        console.log(user)
+        const verifyToken = user.getSignedJwtToken();  
+        const verifyUrl = `https://rumahbercerita.netlify.app/verify/${verifyToken}`
+  
+        const emailMessage = {
+          subject: "Verify your Rumah Bercerita email address",
+          title: "Activate Account",
+          text: `Hey ${user.first_name}, we have received your account registration. Activate your account now by clicking on the button below. This link will expire in 7 days.`,
+          buttonMessage: "Click the button below to activate your account"
+        }
+  
+        try {
+          res.json(await emailConfirmation.sendEmailSendinblue(req.body, emailMessage, verifyUrl));
+          console.log("heyy")
+        } catch (err) {
+          return next(new ErrorResponse(err, 500));
+        }
       }
 
-      const user = await UserModel.create(req.body);
-      const verifyToken = user.getSignedJwtToken();  
-      const verifyUrl = `https://rumahbercerita.netlify.app/verify/${verifyToken}`
-
-      const emailMessage = {
-        subject: "Verify your Rumah Bercerita email address",
-        title: "Activate Account",
-        text: `Hey ${user.first_name}, we have received your account registration. Activate your account now by clicking on the button below. This link will expire in 7 days.`,
-        buttonMessage: "Click the button below to activate your account"
-      }
-
-      try {
-        res.json(await emailConfirmation.sendEmailSendinblue(req.body, emailMessage, verifyUrl));
-      } catch (err) {
-        return next(new ErrorResponse(err, 500));
-      }
     } catch (error) {
       next(error)
     }
