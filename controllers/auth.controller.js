@@ -33,16 +33,11 @@ class AuthController {
           buttonMessage: "Click the button below to activate your account"
         }
   
-        try {
-          res.json(await emailConfirmation.sendEmailSendinblue(req.body, emailMessage, verifyUrl));
-          console.log("heyy")
-        } catch (err) {
-          return next(new ErrorResponse(err, 500));
-        }
+        res.json(await emailConfirmation.sendEmailSendinblue(req.body, emailMessage, verifyUrl));
       }
 
     } catch (error) {
-      next(error)
+      next(new ErrorResponse("Registration failed"), 501)
     }
   }
 

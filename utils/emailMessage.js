@@ -309,10 +309,10 @@ async function sendEmailSendinblue(
       textContent: `Hey ${emailParams.email}, we have received your password reset request, Use the link below to set up a new password for your account. This link will expire in 4 hours.`,
       htmlContent: getEmailHtml(emailMessage, url),
     });
-    return res.status(200).json({
+    return {
       success: true,
       message: `Email sent successfully`,
-    });
+    };
   } catch (error) {
     return res.status(400).json({
       success: false,
