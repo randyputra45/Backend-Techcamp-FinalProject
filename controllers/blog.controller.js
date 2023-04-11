@@ -212,8 +212,7 @@ class BlogController {
                   if (isLiked) {
                     return UserModel.findOneAndUpdate(
                       { _id: id_user },
-                      {
-                        $pull: { liked_blog: id_blog },
+                      { $pull: { liked_blog: id_blog },
                       },
                       { new: true, upsert: true },
                       (err, userUpdate) => {

@@ -27,7 +27,7 @@ const port = process.env.PORT || 3000;
 const uri = process.env.MONGO_URI;
 
 const corsOptions = {
-  origin: true, //included origin as true
+  origin: 'http://localhost:3000', //included origin as true
   credentials: true, //included credentials as true
   exposedHeaders: ["set-cookie"],
 };
